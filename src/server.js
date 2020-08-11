@@ -5,31 +5,31 @@ const app = express();
 const articleInfo = {
     "learn-react": {
         upvotes: 0,
-        comments:[]
+        comments: []
     },
     "learn-node": {
         upvotes: 0,
-        comments:[]
+        comments: []
     },
     "my-thoughts-on-resumes": {
         upvotes: 0,
-        comments:[]
+        comments: []
     }
 }
 
 
 app.use(bodyParser.json())
 
-app.post("/api/articles/:name/upvote",(req,res)=>{
-    const articleName=req.params.name;
-    articleInfo[articleName].upvotes+=1;
+app.post("/api/articles/:name/upvote", (req, res) => {
+    const articleName = req.params.name;
+    articleInfo[articleName].upvotes += 1;
     res.status(200).send(`${articleName} now has ${articleInfo[articleName].upvotes} upvotes`)
 })
 
-app.post("/api/articles/:name/add-comment",(req,res)=>{
-    const {username,text}=req.body;
-    const articleName=req.params.name;
-    articleInfo[articleName].comments.push({username,text})
+app.post("/api/articles/:name/add-comment", (req, res) => {
+    const { username, text } = req.body;
+    const articleName = req.params.name;
+    articleInfo[articleName].comments.push({ username, text })
     res.status(200).send(articleInfo[articleName]);
 })
 
