@@ -17,11 +17,10 @@ const articleInfo = {
 
 app.use(bodyParser.json())
 
-app.get('/hello', (req, res) => res.send('Hello!'));
-app.get("/hello/:name", (req, res) => res.send(`Hello ${req.params.name}`))
-app.post("/hello", (req, res) => res.send(`Hello my name is ${req.body.name}, I am ${req.body.age} yrs old`))
-
-
-
+app.post("/api/articles/:name/upvote",(req,res)=>{
+    const articleName=req.params.name;
+    articleInfo[articleName].upvotes+=1;
+    res.status(200).send(`${articleName} now has ${articleInfo[articleName].upvotes} upvotes`)
+})
 
 app.listen(8050, () => console.log('Listening on port 8050'));
