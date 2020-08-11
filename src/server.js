@@ -2,21 +2,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 const app = express();
 
-const articleInfo = {
-    "learn-react": {
-        upvotes: 0,
-        comments: []
-    },
-    "learn-node": {
-        upvotes: 0,
-        comments: []
-    },
-    "my-thoughts-on-resumes": {
-        upvotes: 0,
-        comments: []
-    }
-}
-
 
 app.use(bodyParser.json())
 
