@@ -23,4 +23,4 @@ app.post("/api/articles/:name/upvote",(req,res)=>{
     res.status(200).send(`${articleName} now has ${articleInfo[articleName].upvotes} upvotes`)
 })
 
-app.listen(8050, () => console.log('Listening on port 8050'));
+app.listen(8050, () => console.log('Listening on port 8050!'));
