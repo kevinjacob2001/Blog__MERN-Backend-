@@ -6,6 +6,7 @@ import path from 'path';
 const app = express();
 
 
+app.use(express.static(path.join(__dirname,'/build')));
 app.use(bodyParser.json());
 
 
@@ -67,14 +68,11 @@ app.post('/api/articles/:name/add-comment',async (req, res) => {
 
 
 
-if(process.env.NODE_ENV==="production")
-{
-    app.use(express.static(path.join(__dirname,'/build')));
+
     app.get("*",(req,res)=>{
         res.sendFile(path.join(__dirname+"/build/index.html"))
     })
-}
 
-const port=process.env.PORT||8050
 
-app.listen(port, () => console.log('Listening on port 8050'));
+
+app.listen(8050, () => console.log('Listening on port 8050'));
